@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_synced/components/standard_button.dart';
-import 'package:get_synced/screens/explore_screen.dart';
+import 'package:get_synced/screens/home_screen.dart';
 
 class InitialWelcomeScreen extends StatefulWidget {
   static const String id = 'initial_welcome_screen';
@@ -81,7 +81,7 @@ class _InitialWelcomeScreenState extends State<InitialWelcomeScreen> {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    ExploreScreen.id,
+                    HomeScreen.id,
                   );
                 },
               ),

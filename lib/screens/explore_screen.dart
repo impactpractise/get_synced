@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_synced/components/filter_button.dart';
+import 'package:get_synced/components/main_title.dart';
 import 'package:get_synced/components/preview_cards.dart';
 import 'package:get_synced/components/searchbar.dart';
+import 'package:get_synced/components/sub_title.dart';
 import 'package:get_synced/models/api_response.dart';
 import 'package:get_synced/models/challenge_to_list.dart';
 import 'package:get_synced/services/challenges_service.dart';
@@ -52,6 +54,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             child: Row(
               children: <Widget>[
                 FilterButton(filterTitle: 'Categories'),
+                SizedBox(width: 15),
                 FilterButton(filterTitle: 'City'),
               ],
             ),
@@ -61,16 +64,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
             padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
             child: Column(
               children: <Widget>[
-                Text(
-                  'How does your next challenge look like?',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                MainHeadline('How does your next challenge look like?'),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 PreviewCards(),
               ],
@@ -82,27 +78,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'Improve yourself',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                  ),
+                  MainHeadline('Improve yourself'),
                   SizedBox(height: 10),
-                  Text(
-                    'With curated challenges for impressive skills',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 1.0),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 16),
-                    child: Wrap(
-                      children: <Widget>[
-                        SizedBox(height: 10),
-                        //ChallengeCardWidget()
-                      ],
-                    ),
-                  ),
+                  SubTitle('With curated challenges for impressive skills'),
                   SizedBox(height: 25),
                   Container(
                     width: double.infinity,

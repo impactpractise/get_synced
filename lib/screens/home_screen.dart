@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          SingleChildScrollView(child: ExploreScreen()),
+          ExploreScreen(),
           Container(),
           Container(),
           Container(),

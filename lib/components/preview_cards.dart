@@ -7,7 +7,7 @@ class PreviewCards extends StatelessWidget {
     return Expanded(
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 8),
-        height: double.infinity,
+        height: 300,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: categories.length,
