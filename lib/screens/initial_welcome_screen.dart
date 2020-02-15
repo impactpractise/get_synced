@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_synced/components/standard_button.dart';
-import 'package:get_synced/screens/home_screen.dart';
+import 'package:get_synced/components/buttom_image_widget.dart';
+import 'package:get_synced/components/sub_title.dart';
 
 class InitialWelcomeScreen extends StatefulWidget {
   static const String id = 'initial_welcome_screen';
@@ -13,91 +13,60 @@ class _InitialWelcomeScreenState extends State<InitialWelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: <Widget>[
-          Container(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                'Welcome to',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  letterSpacing: 3,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w300,
-                  color: Color(0xFF1A2B3E),
-                ),
-              ),
-            ),
-          ),
-          Text(
-            'Synced',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              letterSpacing: 10,
-              fontSize: 45.0,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF1A2B3E),
-            ),
-          ),
-          Text(
-            '________________________________',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w100,
-              color: Color(0xFF1A3B3E),
-            ),
-          ),
-          SizedBox(
-            height: 5.0,
-          ),
-          Text(
-            'Join circles and grow with friends by completing 7, 14 and 30 day challenges.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w300,
-              color: Color(0xFF1A3B3E),
-            ),
-          ),
-          Stack(
+          Align(
             alignment: Alignment.center,
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                child: Image.asset(
-                  'assets/images/background.png',
-                  width: 100,
-                  fit: BoxFit.fill,
-                ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 250, left: 25, right: 25),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Welcome to',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      letterSpacing: 3,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w300,
+                      color: Color(0xFF1A2B3E),
+                    ),
+                  ),
+                  Text(
+                    '________________________________',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w100,
+                      color: Color(0xFF1A3B3E),
+                    ),
+                  ),
+                  Text(
+                    'Synced',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      letterSpacing: 10,
+                      fontSize: 45.0,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF1A2B3E),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  SubTitle(
+                    subtitle:
+                        'Complete 7, 14 or 30 day challenges with friends and build your own portfolio.',
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              StandardButton(
-                color: Color(0xFFF3F3F3),
-                title: 'Get started',
-                textColor: Color(0xFF1A2B3E),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    HomeScreen.id,
-                  );
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 100),
-                child: Text(
-                  'By signing up you are agreeing to our privacy policy and terms of service.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
-            ],
+            ),
           ),
+          BottomImageWidget(
+              image: 'assets/images/background.png',
+              buttonTitle: 'Get started',
+              text:
+                  'By signing up you are agreeing to our privacy policy and terms of service.'),
         ],
       ),
     );

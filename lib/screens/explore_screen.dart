@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_synced/components/action_button.dart';
 import 'package:get_synced/components/filter_button.dart';
 import 'package:get_synced/components/main_title.dart';
 import 'package:get_synced/components/preview_cards.dart';
@@ -64,10 +65,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
             padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
             child: Column(
               children: <Widget>[
-                MainHeadline('How does your next challenge look like?'),
-                SizedBox(
-                  height: 10,
-                ),
+                MainHeadline('What groups are you interested in?'),
+                SizedBox(height: 10),
                 PreviewCards(),
               ],
             ),
@@ -78,32 +77,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  MainHeadline('Improve yourself'),
+                  MainHeadline('What is your next cool thing?'),
                   SizedBox(height: 10),
-                  SubTitle('With curated challenges for impressive skills'),
-                  SizedBox(height: 25),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    margin: EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Color(0xFF00D9C0),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Add your own challenge",
-                        style: TextStyle(
-                          color: Color(0xFF00D9C0),
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  SubTitle(
+                    subtitle: 'Run challenges and learn impressive skills',
+                    textAlign: TextAlign.center,
                   ),
+                  SizedBox(height: 25),
+                  ActionButton('Start your challenge'),
                 ],
               ),
             ),
