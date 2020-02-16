@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:get_synced/screens/explore_screen.dart';
 import 'package:get_synced/screens/home_screen.dart';
 import 'package:get_synced/screens/initial_welcome_screen.dart';
+import 'package:get_synced/screens/profile_screen.dart';
 import 'package:get_synced/services/challenges_service.dart';
 
 GetIt services = GetIt.instance;
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         //CreateChallengeScreen.id: (context) => CreateChallengeScreen(),
         //ExploreChallengeScreen.id: (context) => ExploreChallengeScreen()
         HomeScreen.id: (context) => HomeScreen(),
+        ProfileScreen.id: (context) => ProfileScreen()
       },
     );
   }

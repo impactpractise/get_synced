@@ -1,31 +1,111 @@
 import 'package:flutter/material.dart';
-import 'package:get_synced/models/challenge_to_list.dart';
 
-class ChallengeCardWidget extends StatelessWidget {
-  final List<ChallengeToShow> challenges = [
-    ChallengeToShow(),
-  ];
+class ChallengeCard extends StatelessWidget {
+  final int length;
+  final String photo;
+  final String city;
+  final String title;
+  final int participants;
+  final int likes;
+  final String difficulty;
+  ChallengeCard({
+    @required this.length,
+    @required this.photo,
+    @required this.city,
+    @required this.title,
+    @required this.participants,
+    @required this.likes,
+    @required this.difficulty,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: EdgeInsets.all(8),
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
           height: 275,
+          width: double.infinity,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(5), topRight: Radius.circular(5)),
             child: Image(
-              image: NetworkImage(
-                  'https://images.unsplash.com/photo-1581640582734-f8858321d5f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=612&q=80'),
+              image: NetworkImage(photo),
               fit: BoxFit.cover,
             ),
           ),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) => Divider(),
+        ),
+        Container(
+          padding: EdgeInsets.only(top: 8, bottom: 8),
+          child: Text(
+            city,
+            style: TextStyle(
+              letterSpacing: 1,
+              color: Color(0xFFFA6900),
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        SizedBox(width: 8),
+        Text(
+          '$length  $title Challenge',
+          style: TextStyle(
+            letterSpacing: 1,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 5),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.thumb_up,
+              size: 12,
+            ),
+            SizedBox(width: 8),
+            Text(
+              '$likes Admirations',
+              style: TextStyle(
+                letterSpacing: 0.5,
+                fontSize: 12,
+              ),
+            ),
+            SizedBox(width: 8),
+            Icon(
+              Icons.people,
+              size: 12,
+            ),
+            SizedBox(width: 8),
+            Text(
+              '$participants Participants',
+              style: TextStyle(
+                letterSpacing: 0.5,
+                fontSize: 12,
+              ),
+            ),
+            SizedBox(width: 8),
+            Text(
+              difficulty,
+              style: TextStyle(
+                letterSpacing: 0.5,
+                fontSize: 12,
+              ),
+            ),
+            SizedBox(width: 8),
+            Expanded(
+              flex: 1,
+              child: Container(
+                // tag: 'hero',
+                child: LinearProgressIndicator(
+                    backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
+                    value: 1,
+                    valueColor: AlwaysStoppedAnimation(Color(0xFF00D9C0))),
+              ),
+            )
+          ],
+        ),
+      ],
     );
   }
 }

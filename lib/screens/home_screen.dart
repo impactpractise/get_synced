@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_synced/screens/explore_screen.dart';
+import 'package:get_synced/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -27,35 +28,35 @@ class _HomeScreenState extends State<HomeScreen>
           Container(),
           Container(),
           Container(),
-          Container()
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: TabBar(
         controller: _tabController,
-        labelColor: Colors.redAccent,
+        labelColor: Color(0xFFFA6900),
         labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
         unselectedLabelColor: Colors.grey[400],
         unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
         indicatorColor: Colors.transparent,
         tabs: <Widget>[
           Tab(
-            icon: Icon(Icons.search, size: 25),
+            icon: Icon(Icons.search, size: 20),
             text: "EXPLORE",
           ),
           Tab(
-            icon: Icon(Icons.favorite_border, size: 25),
+            icon: Icon(Icons.favorite_border, size: 20),
             text: "SAVED",
           ),
           Tab(
-            icon: Icon(Icons.add, size: 25),
+            icon: Icon(Icons.add, size: 20),
             text: "UPDATE",
           ),
           Tab(
-            icon: Icon(Icons.chat_bubble_outline, size: 25),
+            icon: Icon(Icons.chat_bubble_outline, size: 20),
             text: "INBOX",
           ),
           Tab(
-            icon: Icon(Icons.person_outline, size: 25),
+            icon: Icon(Icons.person_outline, size: 20),
             text: "PROFILE",
           ),
         ],

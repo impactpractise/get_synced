@@ -8,7 +8,7 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16),
-      margin: EdgeInsets.only(right: 16),
+      margin: EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
