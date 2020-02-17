@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_synced/components/action_button.dart';
 import 'package:get_synced/components/challenge_card.dart';
 import 'package:get_synced/components/filter_button.dart';
@@ -37,7 +38,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
       _isLoading = true;
     });
     challenges = await service.getChallengeList();
-    print(challenges.length);
+    print(challenges[0].city);
     setState(() {
       _isLoading = false;
     });
@@ -45,76 +46,63 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-          scrollDirection: Axis.vertical,
-          padding: EdgeInsets.only(left: 8, right: 8),
-          itemCount: challenges.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Column(
-              children: <Widget>[
-                SearchBar(),
-                Padding(
-                  padding: EdgeInsets.only(left: 8, right: 8, top: 16),
-                  child: Row(
-                    children: <Widget>[
-                      FilterButton(filterTitle: 'Categories'),
-                      SizedBox(width: 15),
-                      FilterButton(filterTitle: 'City'),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 20.0, right: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SearchBar(),
+              Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                child: Row(
+                  children: <Widget>[
+                    FilterButton(filterTitle: 'Categories'),
+                    SizedBox(width: 15),
+                    FilterButton(filterTitle: 'City'),
+                  ],
                 ),
-                Container(
-                  height: 300,
-                  padding:
-                      EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      MainHeadline(
-                          title: 'Here are curated groups for you',
-                          textAlign: TextAlign.start),
-                      SizedBox(height: 10),
-                      SubTitle(
-                        subtitle: 'Meet people that share your interests',
-                        textAlign: TextAlign.start,
-                      ),
-                      PreviewCards(),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        MainHeadline(
-                            title: 'Ready for your next challenge?',
-                            textAlign: TextAlign.start),
-                        SizedBox(height: 10),
-                        SubTitle(
-                          subtitle:
-                              'What is the next cool thing you want to experience?',
-                          textAlign: TextAlign.start,
-                        ),
-                        SizedBox(height: 25),
-                        ActionButton('Start your challenge'),
-                        ChallengeCard(
-                          title: challenges[index].name,
-                          photo: challenges[index].photo,
-                          difficulty: challenges[index].difficulty,
-                          likes: challenges[index].likeCount,
-                          participants: challenges[index].participantCount,
-                          length: challenges[index].length,
-                          city: challenges[index].city,
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            );
-          }),
+              ),
+              MainHeadline(
+                  title: 'Here are curated groups for you',
+                  textAlign: TextAlign.start),
+              SizedBox(height: 10),
+              SubTitle(
+                subtitle: 'Meet people that share your interests',
+                textAlign: TextAlign.start,
+              ),
+              Container(height: 200, child: PreviewCards()),
+              MainHeadline(
+                  title: 'Ready for your next challenge?',
+                  textAlign: TextAlign.start),
+              SizedBox(height: 10),
+              SubTitle(
+                subtitle: 'What is the next cool thing you want to experience?',
+                textAlign: TextAlign.start,
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+                itemCount: challenges.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ChallengeCard(
+                    title: challenges[index].name,
+                    photo: challenges[index].photo,
+                    difficulty: challenges[index].difficulty,
+                    likes: challenges[index].likeCount,
+                    participants: challenges[index].participantCount,
+                    length: challenges[index].length,
+                    city: challenges[index].city,
+                  );
+                },
+              ),
+              ActionButton('Start your challenge'),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

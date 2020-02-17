@@ -20,31 +20,25 @@ class ChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Wrap(
       children: <Widget>[
-        Container(
-          height: 275,
-          width: double.infinity,
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-            child: Image(
-              image: NetworkImage(photo),
-              fit: BoxFit.cover,
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+          child: Image(
+            height: 300,
+            width: double.infinity,
+            image: NetworkImage(photo),
+            fit: BoxFit.cover,
           ),
         ),
-        Container(
-          padding: EdgeInsets.only(top: 8, bottom: 8),
-          child: Text(
-            city,
-            style: TextStyle(
-              letterSpacing: 1,
-              color: Color(0xFFFA6900),
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
+        Text(
+          city,
+          style: TextStyle(
+            letterSpacing: 1,
+            color: Color(0xFFFA6900),
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
           ),
         ),
         SizedBox(width: 8),
@@ -93,16 +87,13 @@ class ChallengeCard extends StatelessWidget {
               ),
             ),
             SizedBox(width: 8),
-            Expanded(
-              flex: 1,
-              child: Container(
-                // tag: 'hero',
-                child: LinearProgressIndicator(
-                    backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
-                    value: 1,
-                    valueColor: AlwaysStoppedAnimation(Color(0xFF00D9C0))),
-              ),
-            )
+            SizedBox(
+              width: 25,
+              child: LinearProgressIndicator(
+                  backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
+                  value: 1,
+                  valueColor: AlwaysStoppedAnimation(Color(0xFF00D9C0))),
+            ),
           ],
         ),
       ],
