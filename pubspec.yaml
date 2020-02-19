@@ -11,6 +11,13 @@ dependencies:
     sdk: flutter
   json_annotation: ^3.0.1
   get_it: ^3.1.0
+  firebase_auth: ^0.15.4
+  firebase_core: ^0.4.4
+  firebase_analytics: ^5.0.11
+
+  cloud_firestore: ^0.13.2+3
+  rxdart: ^0.22.0
+
 
 
   cupertino_icons: ^0.1.2

@@ -88,7 +88,7 @@ class ChallengeCard extends StatelessWidget {
             ),
             SizedBox(width: 8),
             SizedBox(
-              width: 25,
+              width: 60,
               child: LinearProgressIndicator(
                   backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
                   value: 1,
